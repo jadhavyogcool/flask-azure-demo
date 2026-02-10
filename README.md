@@ -78,7 +78,41 @@ gunicorn
 
 ---
 
-## 🧱 Step 3 – Test Locally
+## 🧱 Step 3 – Create Virtual Environment (Recommended)
+
+Create a virtual environment so dependencies do not affect other projects.
+
+```bash
+python -m venv venv
+```
+
+Activate it:
+
+**Windows**
+```bash
+venv\Scripts\activate
+```
+
+**Linux / Mac**
+```bash
+source venv/bin/activate
+```
+
+Upgrade pip (optional but recommended):
+
+```bash
+python -m pip install --upgrade pip
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🧱 Step 4 – Test Locally
 
 ```bash
 pip install -r requirements.txt
@@ -91,7 +125,7 @@ If it works locally → cloud deployment will work.
 
 ---
 
-## 🧱 Step 4 – Initialize Git
+## 🧱 Step 5 – Initialize Git
 
 ```bash
 git init
@@ -101,7 +135,7 @@ git commit -m "initial commit"
 
 ---
 
-## 🧱 Step 5 – Create GitHub Repository
+## 🧱 Step 6 – Create GitHub Repository
 
 Create an empty repository on GitHub.
 
@@ -115,7 +149,7 @@ git push -u origin master
 
 ---
 
-## 🧱 Step 6 – Create Azure Web App
+## 🧱 Step 7 – Create Azure Web App
 
 In Azure portal:
 
@@ -129,7 +163,7 @@ https://yourapp.azurewebsites.net
 
 ---
 
-## 🧱 Step 7 – Enable Publish Profile Download
+## 🧱 Step 8 – Enable Publish Profile Download
 
 If download fails:
 
@@ -141,7 +175,7 @@ Save and **Restart** the app.
 
 ---
 
-## 🧱 Step 8 – Download Publish Profile
+## 🧱 Step 9 – Download Publish Profile
 
 Go to Overview → **Get publish profile**.
 
@@ -149,7 +183,7 @@ Open the file and copy all contents.
 
 ---
 
-## 🧱 Step 9 – Add Secret in GitHub
+## 🧱 Step 10 – Add Secret in GitHub
 
 GitHub Repo → Settings → Secrets and variables → Actions → New repository secret.
 
@@ -163,7 +197,7 @@ Paste the publish profile content.
 
 ---
 
-## 🧱 Step 10 – Create Workflow File
+## 🧱 Step 11 – Create Workflow File
 
 Inside project create:
 
@@ -179,7 +213,7 @@ deploy.yml
 
 ---
 
-## 🧱 Step 11 – Workflow YAML (master)
+## 🧱 Step 12 – Workflow YAML (master)
 
 ```yaml
 name: Deploy Flask to Azure from Master
@@ -216,7 +250,7 @@ Replace **your-app-name** with the Azure Web App name.
 
 ---
 
-## 🧱 Step 12 – Configure Startup Command in Azure
+## 🧱 Step 13 – Configure Startup Command in Azure
 
 Azure → Web App → Settings → Configuration → General Settings.
 
@@ -230,7 +264,7 @@ Save → Restart.
 
 ---
 
-## 🧱 Step 13 – Commit and Push Workflow
+## 🧱 Step 14 – Commit and Push Workflow
 
 ```bash
 git add .
@@ -240,7 +274,7 @@ git push origin master
 
 ---
 
-## 🧱 Step 14 – If Push Fails (OAuth workflow error)
+## 🧱 Step 15 – If Push Fails (OAuth workflow error)
 
 Error example:
 
@@ -252,7 +286,7 @@ This means your Personal Access Token (PAT) does not have **workflow** permissio
 
 ---
 
-## 🧱 Step 15 – Create PAT with Workflow Scope
+## 🧱 Step 16 – Create PAT with Workflow Scope
 
 GitHub → Profile → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token.
 
@@ -265,7 +299,7 @@ Generate and copy the token.
 
 ---
 
-## 🧱 Step 16 – Remove Old Credentials (Windows)
+## 🧱 Step 17 – Remove Old Credentials (Windows)
 
 Control Panel → Credential Manager → Windows Credentials.
 
@@ -277,7 +311,7 @@ github.com
 
 ---
 
-## 🧱 Step 17 – Push Again Using New Token
+## 🧱 Step 18 – Push Again Using New Token
 
 ```bash
 git push origin master
@@ -288,7 +322,7 @@ Password → paste PAT
 
 ---
 
-## 🧱 Step 18 – Watch Deployment
+## 🧱 Step 19 – Watch Deployment
 
 GitHub → Actions → open running workflow.
 
