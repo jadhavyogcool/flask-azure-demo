@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Running from master branch 🚀"
+    return "Running on azure 🚀"
 
 if __name__ == "__main__":
     app.run()
